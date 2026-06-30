@@ -1,312 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Police ID</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-body{
-
-    background:#f2f2f2;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    height:100vh;
-}
-
-/* ========================= */
-
-.card{
-
-    width:380px;
-}
-
-/* ========================= */
-
-.top{
-
-    position:relative;
-
-    background:white;
-
-    border:4px solid black;
-
-    border-bottom:none;
-
-    clip-path:polygon(12% 0%,88% 0%,100% 100%,0% 100%);
-
-    padding:45px 35px 30px;
-}
-
-/* ========================= */
-/* LIGHT BAR */
-/* ========================= */
-
-.lightbar{
-
-    position:absolute;
-
-    top:-38px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    display:flex;
-}
-
-.light{
-
-    width:62px;
-
-    height:34px;
-
-    border:4px solid black;
-
-    transition:.15s;
-}
-
-.red{
-
-    background:#ff2323;
-
-}
-
-.white{
-
-    width:35px;
-
-    background:white;
-}
-
-.blue{
-
-    background:#3b45ff;
-}
-
-/* ตอนเปิดไฟ */
-
-.flash .red{
-
-    animation:redFlash .6s infinite;
-}
-
-.flash .blue{
-
-    animation:blueFlash .6s infinite;
-}
-
-@keyframes redFlash{
-
-0%,49%{
-
-opacity:1;
-box-shadow:0 0 18px red;
-
-}
-
-50%,100%{
-
-opacity:.25;
-box-shadow:none;
-
-}
-
-}
-
-@keyframes blueFlash{
-
-0%,49%{
-
-opacity:.25;
-box-shadow:none;
-
-}
-
-50%,100%{
-
-opacity:1;
-box-shadow:0 0 18px #3b45ff;
-
-}
-
-}
-
-/* ========================= */
-
-.content{
-
-display:flex;
-
-justify-content:space-between;
-
-margin-top:5px;
-}
-
-/* ========================= */
-
-.info{
-
-width:58%;
-}
-
-.info h2{
-
-font-size:30px;
-
-margin-bottom:15px;
-}
-
-.info p{
-
-font-size:18px;
-
-margin:10px 0;
-}
-
-/* ========================= */
-
-.photo{
-
-width:110px;
-
-height:140px;
-
-border:4px solid black;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:70px;
-
-background:white;
-}
-
-/* ========================= */
-
-.bottom{
-
-height:150px;
-
-background:black;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-}
-
-.name{
-
-background:white;
-
-border:6px solid gold;
-
-padding:12px 55px;
-
-font-size:24px;
-
-font-weight:bold;
-
-}
-
-/* ========================= */
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police ID</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            width: 380px;
+        }
+
+        /* ========================= */
+        .top {
+            position: relative;
+            background: white;
+            border: 4px solid black;
+            border-bottom: none;
+            clip-path: polygon(12% 0%, 88% 0%, 100% 100%, 0% 100%);
+            padding: 45px 35px 30px;
+        }
+
+        /* ========================= */
+        /* LIGHT BAR - ปรับให้เป็นแท่งทึบ */
+        /* ========================= */
+        .lightbar {
+            position: absolute;
+            top: -38px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .light {
+            width: 62px;
+            height: 34px;
+            border: 4px solid black;
+            transition: .15s;
+            /* เปลี่ยนเป็นแท่งทึบ ไม่มีเงาเริ่มต้น */
+            box-shadow: none;
+        }
+
+        .red {
+            background: #cc0000;
+            /* สีแดงทึบเข้ม */
+        }
+
+        .white {
+            width: 35px;
+            background: white;
+        }
+
+        .blue {
+            background: #0026cc;
+            /* สีน้ำเงินทึบเข้ม */
+        }
+
+        /* ตอนเปิดไฟ - ให้แท่งสว่างขึ้นแบบฟุ้งๆ */
+        .flash .red {
+            animation: redFlash .6s infinite;
+        }
+
+        .flash .blue {
+            animation: blueFlash .6s infinite;
+        }
+
+        @keyframes redFlash {
+            0%,
+            49% {
+                opacity: 1;
+                /* สว่างเต็มที่ + ฟุ้ง */
+                box-shadow: 0 0 25px 8px #ff4444;
+                background: #ff3333;
+                /* สีแดงสด */
+            }
+            50%,
+            100% {
+                opacity: 0.3;
+                /* มืดลง แต่ยังเห็นแท่ง */
+                box-shadow: none;
+                background: #880000;
+                /* สีแดงทึบเข้ม */
+            }
+        }
+
+        @keyframes blueFlash {
+            0%,
+            49% {
+                opacity: 0.3;
+                box-shadow: none;
+                background: #001a80;
+                /* สีน้ำเงินทึบเข้ม */
+            }
+            50%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 25px 8px #4466ff;
+                background: #3355ff;
+                /* สีน้ำเงินสด */
+            }
+        }
+
+        /* ========================= */
+        .content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+
+        .info {
+            width: 58%;
+        }
+
+        .info h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .info p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .photo {
+            width: 110px;
+            height: 140px;
+            border: 4px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 70px;
+            background: white;
+        }
+
+        .bottom {
+            height: 150px;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .name {
+            background: white;
+            border: 6px solid gold;
+            padding: 12px 55px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
+    <div class="card">
+        <div class="top">
+            <div class="lightbar">
+                <div class="light red"></div>
+                <div class="light white"></div>
+                <div class="light blue"></div>
+            </div>
+            <div class="content">
+                <div class="info">
+                    <h2>Weerawat Suwannamajo</h2>
+                    <p>ID : 663110310088</p>
+                    <p>Computer Engineering</p>
+                    <p>Nakhon Phanom University</p>
+                </div>
+                <div class="photo">👤</div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="name">STUDENT</div>
+        </div>
+    </div>
 
-<div class="card">
+    <script>
+        const body = document.body;
+        let timer;
 
-<div class="top">
+        // ขยับเมาส์แล้วไฟติด
+        document.addEventListener("mousemove", () => {
+            body.classList.add("flash");
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                body.classList.remove("flash");
+            }, 300);
+        });
 
-<div class="lightbar">
-
-<div class="light red"></div>
-<div class="light white"></div>
-<div class="light blue"></div>
-
-</div>
-
-<div class="content">
-
-<div class="info">
-
-<h2>John Doe</h2>
-
-<p>ID : 650000001</p>
-
-<p>Computer Engineering</p>
-
-<p>Kasetsart University</p>
-
-</div>
-
-<div class="photo">
-
-👤
-
-</div>
-
-</div>
-
-</div>
-
-<div class="bottom">
-
-<div class="name">
-
-STUDENT
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-const body=document.body;
-
-let timer;
-
-// ขยับเมาส์แล้วไฟติด
-document.addEventListener("mousemove",()=>{
-
-    body.classList.add("flash");
-
-    clearTimeout(timer);
-
-    timer=setTimeout(()=>{
-
-        body.classList.remove("flash");
-
-    },300);
-
-});
-
-// ถ้าอยากให้ไฟติดตั้งแต่เปิดเว็บ ให้เอาคอมเมนต์ออก
-// body.classList.add("flash");
-
-</script>
-
+        // ถ้าอยากให้ไฟติดตั้งแต่เปิดเว็บ ให้เอาคอมเมนต์ออก
+        // body.classList.add("flash");
+    </script>
 </body>
 </html>
